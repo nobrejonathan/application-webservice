@@ -1,18 +1,25 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core">
-
-<f:loadBundle basename="resources.application" var="msg" />
-
-<head>
-<title><h:outputText value="#{msg.welcomeTitle}" /></title>
-</head>
-
-<body>
-	<h:outputLabel value="#{msg.all}" />
-</body>
+	
+	<f:loadBundle basename="resources.application" var="msg" />
+	
+	<head>
+		<title><h:outputText value="#{msg.welcomeTitle}" /></title>
+	</head>
+	
+	<body>
+	<h:outputText value="Para usar o serviço o usuário poderá usar as seguintes urls:" /><br/><br/>
+	<h:outputText value="(Buscar Todos os alunos)" /><br/>
+	<h:outputText value="http://localhost:8080/ApplicationWSWeb/rest/alunos" /><br/><br/>
+	
+	<h:outputText value="(Buscar Por ID)" /><br/>
+	<h:outputText value="http://localhost:8080/ApplicationWSWeb/rest/alunos?find_id=1" /><br/><br/>
+	
+	<h:outputText value="(Buscar Por Matricula)" /><br/>
+	<h:outputText value="http://localhost:8080/ApplicationWSWeb/rest/alunos?find_matricula=UC12105022" /><br/><br/>
+	</body>
 </html>
