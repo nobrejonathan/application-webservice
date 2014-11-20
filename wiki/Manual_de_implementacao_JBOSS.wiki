@@ -1,0 +1,62 @@
+#labels datasource,jboss
+Luciano dos Passos Almeida Manual de Implantação Application WebService?
+
+Implantando projeto no Jboss-as-7.1.1.Final
+
+Primeiro passo
+
+Configurar o driver do MySql?
+
+Na pasta do Jboss entre em modules/com e crie uma pasta chamada mysql e dentro desse diretório crie uma pasta chamada main. Copie o driver do mysql para dentro dessa pasta main. Crie um arquivo com o nome module.xml com o seguinte conteudo: <?xml version="1.0" encoding="UTF-8"?>
+
+<module xmlns="urn:jboss:module:1.1" name="com.mysql">
+<resources>
+<resource-root path="mysql-connector-java-5.1.7-bin.jar">
+</resource-root>
+</resources>
+<dependencies>
+<module name="javax.api">
+</module>
+<module name="javax.transaction.api">
+</module>
+<module name="javax.servlet.api" optional="true">
+</module>
+</dependencies>
+</module>
+Pronto o driver do mysql está configurado.
+
+Agora é necessário criar um datasource e declarar o driver no arquivo de configurações do Jboss o standalone.xml Partindo da pasta do Jboss entre em standalone\configuration e abra o arquivo chamado standalone.xml. Nesse arquivo dentro da tag
+
+<drivers>
+declare o seguinte driver:
+<driver name="mysql" module="com.mysql">
+<xa-datasource-class>
+com.mysql.jdbc.JdbcDataSource?
+</xa-datasource-class>
+</driver>
+Após feito isso nesse arquivo dentro da tag
+
+<datasources>
+declare o seguinte datasource:
+<datasource jndi-name="java:jboss/datasources/alunosDS" pool-name="alunosDS" enabled="true" use-java-context="true">
+<connection-url>
+jdbc:mysql://localhost:3306/BD_ALUNOS
+</connection-url>
+<driver>
+mysql
+</driver>
+<security>
+<user-name>
+root
+</user-name>
+<password>
+root
+</password>
+</security>
+</datasource>
+Nesse data source configure o user name e o password de acordo com o do mysql que estiver usando.
+
+Após feito essa configuração já é possível rodar a aplicação. Lembrando que é necessario no mysql criar um banco de dados chamado BD_ALUNOS ou mudar o nome do banco de dados na tag
+
+<connection-url>
+do datasource declarado anteriormente.
