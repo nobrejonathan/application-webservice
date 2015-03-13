@@ -1,0 +1,1 @@
+Esse projeto tem como objetivo demonstrar a implementação de projetos desenvolvidos utilizando a tecnologia EJB3.0 juntamente com JPA2.0 e JAX-RS para a construção de um WebService que retorna em formatos XML e JSON quando é passado argumentos de pesquisa na URL.
